@@ -1,1 +1,3 @@
 ## API for Where Am I
+
+Build in rails 4
