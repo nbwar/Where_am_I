@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		013E6F06183483D300B568C7 /* NWLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 013E6F05183483D300B568C7 /* NWLocationManager.m */; };
+		013E6F08183483F400B568C7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013E6F07183483F400B568C7 /* CoreLocation.framework */; };
 		01F4763718347C01007CA2D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F4763618347C01007CA2D4 /* Foundation.framework */; };
 		01F4763918347C01007CA2D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F4763818347C01007CA2D4 /* CoreGraphics.framework */; };
 		01F4763B18347C01007CA2D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F4763A18347C01007CA2D4 /* UIKit.framework */; };
@@ -34,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		013E6F04183483D300B568C7 /* NWLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWLocationManager.h; sourceTree = "<group>"; };
+		013E6F05183483D300B568C7 /* NWLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWLocationManager.m; sourceTree = "<group>"; };
+		013E6F07183483F400B568C7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		01F4763318347C01007CA2D4 /* where_am_i_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = where_am_i_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F4763618347C01007CA2D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		01F4763818347C01007CA2D4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				013E6F08183483F400B568C7 /* CoreLocation.framework in Frameworks */,
 				01F4763918347C01007CA2D4 /* CoreGraphics.framework in Frameworks */,
 				01F4763B18347C01007CA2D4 /* UIKit.framework in Frameworks */,
 				01F4763718347C01007CA2D4 /* Foundation.framework in Frameworks */,
@@ -101,6 +107,7 @@
 		01F4763518347C01007CA2D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				013E6F07183483F400B568C7 /* CoreLocation.framework */,
 				01F4763618347C01007CA2D4 /* Foundation.framework */,
 				01F4763818347C01007CA2D4 /* CoreGraphics.framework */,
 				01F4763A18347C01007CA2D4 /* UIKit.framework */,
@@ -117,6 +124,8 @@
 				01F4764818347C01007CA2D4 /* Main.storyboard */,
 				01F4764B18347C01007CA2D4 /* NWViewController.h */,
 				01F4764C18347C01007CA2D4 /* NWViewController.m */,
+				013E6F04183483D300B568C7 /* NWLocationManager.h */,
+				013E6F05183483D300B568C7 /* NWLocationManager.m */,
 				01F4764E18347C01007CA2D4 /* Images.xcassets */,
 				01F4763D18347C01007CA2D4 /* Supporting Files */,
 			);
@@ -253,6 +262,7 @@
 				01F4764D18347C01007CA2D4 /* NWViewController.m in Sources */,
 				01F4764318347C01007CA2D4 /* main.m in Sources */,
 				01F4764718347C01007CA2D4 /* NWAppDelegate.m in Sources */,
+				013E6F06183483D300B568C7 /* NWLocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +471,7 @@
 				01F4766718347C01007CA2D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01F4766818347C01007CA2D4 /* Build configuration list for PBXNativeTarget "where_am_i_iosTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +480,7 @@
 				01F4766A18347C01007CA2D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

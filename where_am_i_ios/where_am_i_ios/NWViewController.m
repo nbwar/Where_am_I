@@ -7,17 +7,26 @@
 //
 
 #import "NWViewController.h"
+#import "NWLocationManager.h"
 
 @interface NWViewController ()
-
+@property (strong, nonatomic) NWLocationManager *locationManager;
 @end
 
 @implementation NWViewController
 
+-(NWLocationManager *)locationManager
+{
+    if (!_locationManager) _locationManager = [[NWLocationManager alloc] init];
+    return _locationManager;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -26,6 +35,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)howFarButtonPressed:(UIButton *)sender {
+- (IBAction)howFarButtonPressed:(UIButton *)sender
+{
+    [self.locationManager startLocationManager];
 }
 @end
