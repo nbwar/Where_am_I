@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>27264493-C15F-4BEB-8B0D-6EE74105367E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>where_am_i_ios</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2B4E5BB7-6566-485F-BF9C-A31B620BD55D</key>
+		<string>ssh://github.com/nbwar/Where_am_I.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>where_am_i_ios/where_am_i_ios.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2B4E5BB7-6566-485F-BF9C-A31B620BD55D</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/nbwar/Where_am_I.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2B4E5BB7-6566-485F-BF9C-A31B620BD55D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2B4E5BB7-6566-485F-BF9C-A31B620BD55D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>where_am_i</string>
+		</dict>
+	</array>
+</dict>
+</plist>

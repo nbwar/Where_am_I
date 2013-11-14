@@ -10,4 +10,8 @@
 
 @interface NWViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITextField *locationTextField;
+
+- (IBAction)howFarButtonPressed:(UIButton *)sender;
+
 @end
