@@ -52,7 +52,11 @@
 
 - (IBAction)howFarButtonPressed:(UIButton *)sender
 {
-
+    if ([self.locationTextField.text isEqualToString:@""]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No Location" message:@"You need to first enter a location" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alertView show];
+        return;
+    }
     // Post request to server
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:3000/api/location.json"]];
     request.HTTPMethod = @"POST";

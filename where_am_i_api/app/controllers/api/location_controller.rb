@@ -1,8 +1,11 @@
 module Api
   class LocationController < ApplicationController
     def determine_distance
-      p '*' * 1000
-      p params
+      # Geocoder.coordinates(params[""])
+
+      # lat = params["latitude"]
+      # lng = params["longitude"]
+
       render :json => {blah: 'blah'}
     end
   end
