@@ -12,6 +12,9 @@
 
 @interface NWLocationManager : NSObject < CLLocationManagerDelegate >
 
+@property (nonatomic) float latitude;
+@property (nonatomic) float longitude;
+
 -(void)startLocationManager;
 -(void)stopLocationManager;
 

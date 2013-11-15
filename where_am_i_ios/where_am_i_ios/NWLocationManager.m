@@ -25,7 +25,6 @@
 
 -(void)startLocationManager
 {
-    NSLog(@"Starting Location Manager");
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.distanceFilter = 10; // meters
@@ -34,15 +33,14 @@
 
 -(void)stopLocationManager
 {
-    NSLog(@"Stopping Location Manager");
     [self.locationManager stopUpdatingLocation];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"HELLO");
     CLLocation* location = [locations lastObject];
-    NSLog(@"%+.6f", location.coordinate.latitude);
+    self.latitude = location.coordinate.latitude;
+    self.longitude = location.coordinate.longitude;
     [self stopLocationManager];
 }
 @end

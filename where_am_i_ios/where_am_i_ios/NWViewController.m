@@ -18,7 +18,7 @@
 @implementation NWViewController
 
 
-#pragma mark - NSURLConnection Delegate methods
+#pragma mark - Initalizers
 ////////////////////////////////////////////////
 ////////////// Initializers ////////////////////
 ////////////////////////////////////////////////
@@ -33,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.locationManager startLocationManager];
     
     
 }
@@ -43,13 +44,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - IBActions
+////////////////////////////////////////////////
+///////////////// IBActions ////////////////////
+////////////////////////////////////////////////
+
 - (IBAction)howFarButtonPressed:(UIButton *)sender
 {
-    [self.locationManager startLocationManager];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:3000/api/location.json"]];
+
+    // Post request to server
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:3000/api/location.json"]];
+    request.HTTPMethod = @"POST";
+    NSString *data = [NSString stringWithFormat:@"latitude=%f,longitude=%f", self.locationManager.latitude, self.locationManager.longitude];
+    request.HTTPBody = [data dataUsingEncoding:NSASCIIStringEncoding];
+    
     
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     self.connection = conn;
+
 
 }
 
@@ -61,7 +74,6 @@
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     self.responseData = [[NSMutableData alloc] init];
-    NSLog(@"didreceieve response");
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -80,6 +92,7 @@
         NSDictionary *dict = response;
         NSLog(@"dict: %@", dict);
     }
+    
 }
 
 -(NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
