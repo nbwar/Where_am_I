@@ -9,6 +9,8 @@
 #import "NWViewController.h"
 #import "NWLocationManager.h"
 
+#define API_URL @"http://localhost:3000/api/location.json"
+
 @interface NWViewController ()
 @property (strong, nonatomic) NWLocationManager *locationManager;
 @property (strong, nonatomic) NSMutableData *responseData;
@@ -57,11 +59,13 @@
         [alertView show];
         return;
     }
+    NSString *location = self.locationTextField.text;
+    
     // Post request to server
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:3000/api/location.json"]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:API_URL]];
     request.HTTPMethod = @"POST";
-    NSString *data = [NSString stringWithFormat:@"latitude=%f,longitude=%f", self.locationManager.latitude, self.locationManager.longitude];
-    request.HTTPBody = [data dataUsingEncoding:NSASCIIStringEncoding];
+    NSString *data = [NSString stringWithFormat:@"latitude=%f&longitude=%f&location=%@", self.locationManager.latitude, self.locationManager.longitude, location];
+    request.HTTPBody = [data dataUsingEncoding:NSUTF8StringEncoding];
     
     
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
