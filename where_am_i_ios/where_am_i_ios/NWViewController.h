@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NWViewController : UIViewController
+@interface NWViewController : UIViewController <NSURLConnectionDataDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *locationTextField;
 
 - (IBAction)howFarButtonPressed:(UIButton *)sender;
+
 
 @end
