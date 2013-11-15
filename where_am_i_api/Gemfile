@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'rails-api'
 gem "active_model_serializers"
+gem 'geocoder'
 
 group :doc do
   gem 'sdoc', require: false
