@@ -54,6 +54,9 @@
 
 - (IBAction)howFarButtonPressed:(UIButton *)sender
 {
+    [self.locationTextField resignFirstResponder];
+    
+    
     if ([self.locationTextField.text isEqualToString:@""]) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No Location" message:@"You need to first enter a location" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
         [alertView show];
@@ -91,14 +94,19 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSLog(@"%@", [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding]);
     
     NSError *error;
     id response = [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:&error];
     if (!error && [response isKindOfClass:[NSDictionary class]])
     {
         NSDictionary *dict = response;
-        NSLog(@"dict: %@", dict);
+        float distance = [dict[@"distance"] floatValue];
+        
+        NSMutableDictionary *drivingTime = [self calculateTime:distance mph:60];
+        NSMutableDictionary *walkingTime = [self calculateTime:distance mph:3.5];
+        [self updateUI:drivingTime walkingTime:walkingTime distance:distance];
+
+        
     }
     
 }
@@ -106,5 +114,69 @@
 -(NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
 {
     return nil;
+}
+
+#pragma mark - UITextField Delegate Methods
+////////////////////////////////////////////////
+/////////// UITextField Delegate ///////////////
+////////////////////////////////////////////////
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+#pragma mark - Helper Methods
+////////////////////////////////////////////////
+////////////// Helper Methods //////////////////
+////////////////////////////////////////////////
+
+
+
+-(NSMutableDictionary *)calculateTime:(float)distance mph:(float)mph
+{
+    float time = distance / mph;
+    NSMutableDictionary *drivingTime = [[NSMutableDictionary alloc] init];
+    [drivingTime setObject:@(time) forKey:@"time"];
+
+    
+    if (time > 1) {
+        int hours = [@(time) intValue];
+        int minutes = lroundf(fmod(time, 1) * 60);
+        [drivingTime setObject:@(hours) forKey:@"hours"];
+        [drivingTime setObject:@(minutes) forKey:@"minutes"];
+
+    } else {
+        int minutes = lroundf(time * 60);
+        [drivingTime setObject:@(minutes) forKey:@"minutes"];
+    }
+    
+    return drivingTime;
+}
+
+
+
+-(void)updateUI:(NSMutableDictionary *)drivingTime walkingTime:(NSMutableDictionary *)walkingTime distance:(float)distance
+{
+    self.milesLabel.text = [NSString stringWithFormat:@"%.2f", distance];
+    if ([drivingTime[@"time"] floatValue] > 1 ) {
+        self.drivingLabel.text = [NSString stringWithFormat: @"%i hrs %i mins", [drivingTime[@"hours"] intValue], [drivingTime[@"minutes"] intValue]];
+    } else {
+        self.drivingLabel.text = [NSString stringWithFormat:@"%i mins", [drivingTime[@"minutes"] intValue]];
+    }
+    
+    if ([walkingTime[@"time"] floatValue] > 1) {
+        self.walkingLabel.text = [NSString stringWithFormat:@"%i hrs %i mins", [walkingTime[@"hours"] intValue], [walkingTime[@"minutes"] intValue]];
+    } else {
+        self.walkingLabel.text = [NSString stringWithFormat:@"%i mins", [walkingTime[@"minutes"] intValue]];
+    }
+
+    self.distanceView.hidden = NO;
 }
 @end

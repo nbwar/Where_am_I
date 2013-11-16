@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NWViewController : UIViewController <NSURLConnectionDataDelegate>
+@interface NWViewController : UIViewController <NSURLConnectionDataDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *locationTextField;
+@property (strong, nonatomic) IBOutlet UIView *distanceView;
+@property (strong, nonatomic) IBOutlet UILabel *milesLabel;
+@property (strong, nonatomic) IBOutlet UILabel *drivingLabel;
+@property (strong, nonatomic) IBOutlet UILabel *walkingLabel;
 
 - (IBAction)howFarButtonPressed:(UIButton *)sender;
+
 
 
 @end
